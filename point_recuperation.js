@@ -37,10 +37,10 @@ async function main(){
   });
 
   //Update actor RP
-  let newRP = selected_actor.data.data.attributes.rp.base - 1
+  let newRP = selected_actor.data.data.attributes.rp.value - 1
   if(newRP < 0){
     newRP = 0;
   }
-  await selected_actor.update({"data.attributes.rp.base": newRP});
+  await selected_actor.update({"data.attributes.rp.value": newRP});
 
 }
