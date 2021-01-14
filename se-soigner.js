@@ -55,6 +55,10 @@ async function main(){
             ui.notifications.error('Impossible de se soigner avec ça !');
             return;
           }
+          if (heal.data.data.qty == 0){
+            ui.notifications.error(`Vous n'avez plus de ${heal.data.name} !`);
+            return;
+          }
           let newRollString = html.find("#effect")[0].value;
           let roll = new Roll(newRollString).roll();
           let result = roll.total
