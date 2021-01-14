@@ -1,4 +1,4 @@
-﻿main()
+main()
 
 async function main(){
 
@@ -7,7 +7,7 @@ async function main(){
     return;
   }
   let selected_actor = canvas.tokens.controlled[0].actor
-  let actorHeal = selected_actor.items.filter(item => item.data.data.subtype == "consumable" && item.data.data.qty != 0)
+  let actorHeal = selected_actor.items.filter(item => item.data.data.subtype == "consumable")
   console.log(actorHeal)
   if(actorHeal == null || actorHeal == undefined || actorHeal == 0){
     ui.notifications.error(`${selected_actor.data.name} ne possède aucun consommable !`);
@@ -71,6 +71,10 @@ async function main(){
             flavor: `${selected_actor.data.name} récupère ${result} PV`
           });
           heal.update({"data.qty": heal.data.data.qty - 1});
+          if(heal.data.data.qty - 1 == 0){
+            selected_actor.deleteOwnedItem(heal._id);
+          }
+          
         }
       }, 
       close: {
