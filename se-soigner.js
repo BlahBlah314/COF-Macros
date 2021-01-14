@@ -71,10 +71,6 @@ async function main(){
             flavor: `${selected_actor.data.name} récupère ${result} PV`
           });
           heal.update({"data.qty": heal.data.data.qty - 1});
-          if(heal.data.data.qty - 1 == 0){
-            selected_actor.deleteOwnedItem(heal._id);
-          }
-          
         }
       }, 
       close: {
